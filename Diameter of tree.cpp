@@ -1,4 +1,4 @@
-
+// call the diameter function and pass the adj list
 void dfs(vt<vt<ll>>&adj , vt<ll>&visited ,ll u,vt<ll>&level)
 {
     visited[u] = 1;
