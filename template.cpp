@@ -5,15 +5,19 @@ using namespace std ;
 
 #define vt vector
 #define all(c) (c).begin(), (c).end()
+#define rev(v) reverse(v)
 #define sz(x) (int)(x).size()
 #define ll long long
+#define F first 
+#define S second
+#define pll pair<ll,ll>
 #define ld long double
 #define ar array
 #define inf() ifstream cin("d.txt")
 #define onf() ofstream cout("test.txt")
 #define mod 1000000007
 #define pb push_back
-#define endl cout<<"\n";
+#define nl cout<<"\n";
 #define prt1(a) cout<<a<<" "
 #define prt2(a,b) cout<<a<<" "<<b<<" "
 #define prt3(a,b,c) cout<<a<<" "<<b<<" "<<c<<" "
@@ -25,6 +29,10 @@ using namespace std ;
 #define fio ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 #define TEST ll tc;cin>>tc;while(tc--)
 #define EACH(x, a) for (auto& x: a)
+#define YES cout<<"YES";
+#define NO cout<<"NO";
+#define yes cout<<"yes";
+#define no cout<<"no";
 
 template<class A> void read(vt<A>& v);
 template<class A, size_t S> void read(ar<A, S>& a);
@@ -61,7 +69,19 @@ void err(istream_iterator<string> it, T a, Args... args) {
     cerr << *it << " = " << a <<"\n";
     err(++it, args...);
 }
-
+inline int add(int x, int y){ x += y; if(x >= mod) x -= mod; return x;}
+inline int sub(int x, int y){ x -= y; if(x < 0) x += mod; return x;}
+inline int mul(int x, int y){ return (x * 1ll * y) % mod;}
+inline int powr(int a, ll b){
+    int x = 1 % mod;
+    while(b){
+        if(b & 1) x = mul(x, a);
+        a = mul(a, a);
+        b >>= 1;
+    }
+    return x;
+}
+inline int inv(int a){ return powr(a, mod - 2);}
 
 void solve()
 {
@@ -79,12 +99,11 @@ void solve()
     while(tc--){
        // cout<<"Case #"<<k<<": ";k++;
         solve();
-        endl;
+        nl;
+        
     }
     end = clock();
      double time_taken = double(end - start) / double(CLOCKS_PER_SEC); 
     // debug(time_taken);
     
  }
-
-
