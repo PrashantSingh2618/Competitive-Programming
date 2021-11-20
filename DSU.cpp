@@ -1,28 +1,35 @@
-// call Arr is parent array
-ll root (ll Arr[ ] ,ll i)
-{
-    while(Arr[ i ] != i)
-    {
-        Arr[ i ] = Arr[ Arr[ i ] ] ; 
-i = Arr[ i ]; 
-    }
-return i;
-}
 
-  // to do union  initilize size[] by 1 
-void weighted_union(ll Arr[],ll size[],ll A,ll B)
+ll root (vector<ll>&parent ,ll i)
 {
-    ll root_A = root(Arr,A);
-    ll root_B = root(Arr,B);
-    if(size[root_A] < size[root_B ])
+    while(parenty[i] != i)
     {
-Arr[ root_A ] = Arr[root_B];
-size[root_B] += size[root_A];
+        parent[i] = parent[parent[i]] ; 
+        i = parent[i]; 
+    }
+    return i;
 }
+void union(vector<ll>&parent,vector<ll>&size,ll A, ll B)
+{
+    ll root_A = root(parent,A);
+    ll root_B = root(parent,B);
+    if(size[root_A] < size[root_B])
+    {
+        parent[ root_A ] = parent[root_B];
+        size[root_B] += size[root_A];
+    }
     else
     {
-Arr[ root_B ] = Arr[root_A];
-size[root_A] += size[root_B];
-}
+        parent[ root_B ] = parent[root_A];
+        size[root_A] += size[root_B];
+    }
 
+}
+// Call DSU_init to initilise initial values
+void DSU_init(vector<ll>&parent,vector<ll>&size,ll n)
+{
+    for(int i = 0 ; i < n;i++)
+    {
+        parent[i] = i ;
+        size[i] = 1;
+    }
 }
