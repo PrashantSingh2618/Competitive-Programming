@@ -4,7 +4,7 @@ void update(vt<ll>&fen, ll ind, ll val,ll n)
 {
     while (ind <= n) 
     {
-    	fen[ind]++;
+    	fen[ind]+=val;
     	ind += ind & (-ind);
     }
 }
