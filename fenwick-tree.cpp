@@ -9,7 +9,7 @@ void update(vt<ll>&fen, ll ind, ll val,ll n)
     }
 }
 ll query(vt<ll>&fen,ll ind){
-    ll s =  0;
+    ll s = 0;
     while(ind>0)
     {
         s+=fen[ind];
