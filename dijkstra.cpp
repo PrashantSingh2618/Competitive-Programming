@@ -1,3 +1,4 @@
+// find shortest distance to all vertices from a source
 vector<int> dijkstra(int n, int src, vector<vector<pair<int,int>>>&adj){
     vector<int>dist(n, INT_MAX);
     priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>>pq ;
