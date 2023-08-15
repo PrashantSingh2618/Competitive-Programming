@@ -23,3 +23,8 @@ vector<int> dijkstra(int n, int src, vector<vector<pair<int,int>>>&adj){
     }
     return dist;
 }
+
+// complexity -> O(ElogV)
+// this is for Dirceted Cyclic graphs with no edge weights 
+// However if there is no cycles then we can improve the TC to O(E+V) by using toposort method to find shortest path 
+// check shortest-path-in-DAG.cpp
