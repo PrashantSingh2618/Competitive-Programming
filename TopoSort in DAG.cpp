@@ -42,6 +42,8 @@ vector<int> topoSort(int n,vector<vector<pair<int,int>>>&adj){
                 q.push(it);
         }
     }
-    return ans ;
+   if(ans.size() == n)
+       return ans;
+    return {} ; // toposort cannot be formed
 }
 
