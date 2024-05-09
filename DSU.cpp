@@ -5,14 +5,10 @@ public:
 
     DSU(int n){
         N = n;
-        par.resize(N);
+        parent.resize(N);
         size.resize(N);
-    }
 
-    void init()
-    {
-        for(int i = 0 ; i < N;i++)
-        {
+        for(int i = 0 ; i < N;i++){
             parent[i] = i ;
             size[i] = 1;
         }
@@ -28,10 +24,10 @@ public:
         return i;
     }
 
-    void union(int A, int B)
+    void _union(int A, int B)
     {
-        int root_A = root(parent,A);
-        int root_B = root(parent,B);
+        int root_A = root(A);
+        int root_B = root(B);
         if(size[root_A] < size[root_B])
         {
             parent[ root_A ] = parent[root_B];
