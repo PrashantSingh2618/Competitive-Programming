@@ -1,24 +1,31 @@
 // find shortest distance to all vertices from a source
 vector<int> dijkstra(int n, int src, vector<vector<pair<int,int>>>&adj){
-    vector<int>dist(n, INT_MAX);
-    priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>>pq ;
-    pq.push({0,src});
-    dist[src] = 0;
-    while(!pq.empty()){
-        auto top = pq.top();
-        pq.pop();
-        int u = top.second ;
+    vt<ll>dist(n, 1e9) ;
+    priority_queue<pair<ll,ll>, vector<pair<ll,ll>>, greater<pair<ll,ll>>>pq ;
+    pq.push({0,src}) ;
+    dist[src] = 0 ;
+    
+    while(!pq.empty()) {
+        auto top = pq.top() ;
+        pq.pop() ;
+        ll w = top.first ;
+        ll u = top.second ;
+
+        // to remove processing same node if it pushed again in queue and it's already relaxed
+        if(dist[u] < w) continue;
+        
         for(auto it: adj[u]){
             int v = it.first ;
-            int wt = it.second ;
-            if(dist[v] > dist[u]+wt){
-                dist[v] = dist[u]+wt;
-                pq.push({dist[v], v});
+            ll weight = it.second ;
+            // cout<<u<<" ->"<<v<<" "<<weight;endl;
+            if(dist[v] > w + weight){
+                dist[v] = w + weight ;
+                pq.push({dist[v], v}) ;
             }
         }
     }
     for(int i = 0 ; i < n;i++){
-        if(dist[i] == INT_MAX)
+        if(dist[i] == 1e9)
             dist[i] = -1 ;
     }
     return dist;
