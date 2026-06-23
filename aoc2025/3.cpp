@@ -112,6 +112,8 @@ public:
     }
 };
 
+// Hint 💡: Find max subsequence of the given string
+
 string findMaxMDigit(const std::string& num_str, int m) {
     int n = num_str.length();
     if (n < m) {
